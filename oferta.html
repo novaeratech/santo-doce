@@ -42,7 +42,10 @@
     }
 
     body {
-      background: var(--sd-section-white);
+      background: var(--sd-header-bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Botões dourados — honey + texto verde (PDF) */
@@ -79,6 +82,7 @@
       font-size: var(--sd-fs-body-sm);
       font-weight: 500;
       padding: 10px 24px;
+      flex: none;
     }
     .announcement__inner {
       display: inline-flex;
@@ -100,11 +104,15 @@
       background: var(--sd-header-bg);
       overflow: visible;
       z-index: 1;
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
     }
 
     .header__grid {
       display: flex;
       justify-content: center;
+      width: 100%;
       padding: 64px 24px 80px;
     }
 
@@ -162,6 +170,8 @@
       padding: var(--sd-space-6) var(--sd-space-4);
       font-size: var(--sd-fs-caption);
       line-height: 1.5;
+      flex: none;
+      margin-top: auto;
     }
   </style>
 </head>
