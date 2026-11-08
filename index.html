@@ -694,6 +694,13 @@
       justify-content: center;
     }
 
+    /* Com overflow horizontal, centralizar empurra o 1º depoimento para fora da área rolável */
+    @media (max-width: 767px) {
+      .section-testimonials__gallery {
+        justify-content: flex-start;
+      }
+    }
+
     /* ============================================================
        SEÇÃO — Bônus exclusivos
        ============================================================ */
@@ -1149,7 +1156,8 @@
       background: var(--sd-white);
     }
 
-    .offer-item > i {
+    .offer-item > i,
+    .offer-item > svg {
       flex: none;
       width: 18px;
       height: 18px;
@@ -1828,27 +1836,27 @@
           <ul class="offer-list" aria-label="Itens inclusos">
             <li class="offer-item">
               <i data-lucide="check"></i>
-              Santo Doce (R$ 837)
+              Santo Doce (R$&nbsp;837)
             </li>
             <li class="offer-item">
               <i data-lucide="check"></i>
-              Doce Natal (R$ 397)
+              Doce Natal (R$&nbsp;397)
             </li>
             <li class="offer-item">
               <i data-lucide="check"></i>
-              Divina Marmita (R$ 197)
+              Divina Marmita (R$&nbsp;197)
             </li>
             <li class="offer-item">
               <i data-lucide="check"></i>
-              Santo Corante (R$ 97)
+              Santo Corante (R$&nbsp;97)
             </li>
             <li class="offer-item">
               <i data-lucide="check"></i>
-              Kit Santo Doce para os 10 primeiros (R$ 100)
+              Kit Santo Doce para os 10 primeiros (R$&nbsp;100)
             </li>
             <li class="offer-item">
               <i data-lucide="check"></i>
-              Sorteio de mixer de mão (R$ 120)
+              Sorteio de mixer de mão (R$&nbsp;120)
             </li>
           </ul>
 
@@ -2118,8 +2126,12 @@
       var oferta = document.getElementById("oferta");
       if (!oferta) return;
 
+      function isMobile() {
+        return window.matchMedia("(max-width: 767px)").matches;
+      }
+
       function ofertaOffset() {
-        return window.matchMedia("(max-width: 767px)").matches ? 12 : 24;
+        return isMobile() ? 12 : 24;
       }
 
       function scrollToOferta(behavior) {
@@ -2129,7 +2141,9 @@
         var viewportHeight = window.innerHeight;
         var top;
 
-        if (cardHeight <= viewportHeight - margin * 2) {
+        if (isMobile()) {
+          top = cardTop - margin;
+        } else if (cardHeight <= viewportHeight - margin * 2) {
           top = cardTop - (viewportHeight - cardHeight) / 2;
         } else {
           var cta = oferta.querySelector(".section-offer__cta");
