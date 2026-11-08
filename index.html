@@ -693,14 +693,6 @@
       display: flex;
       justify-content: center;
     }
-
-    /* Com overflow horizontal, centralizar empurra o 1º depoimento para fora da área rolável */
-    @media (max-width: 767px) {
-      .section-testimonials__gallery {
-        justify-content: flex-start;
-      }
-    }
-
     /* ============================================================
        SEÇÃO — Bônus exclusivos
        ============================================================ */
@@ -922,6 +914,15 @@
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+
+    /* Com overflow horizontal, centralizar empurra o 1º item para fora da área rolável */
+    @media (max-width: 767px) {
+      .section-inside__gallery,
+      .section-testimonials__gallery,
+      .section-recipes__gallery {
+        justify-content: flex-start;
+      }
     }
 
     .section-recipes__list-heading {
